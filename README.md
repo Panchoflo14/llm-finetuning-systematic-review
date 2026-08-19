@@ -2,7 +2,7 @@
 
 Undergraduate thesis (Pontificia Universidad Católica del Ecuador) - a PRISMA 2020 systematic review of fine-tuning techniques for Large Language Models published between 2020 and 2025.
 
-> Published in PUCE's institutional repository (link pending).
+> Submitted and archived at PUCE's library (print/physical indexing - no institutional digital repository).
 
 ## Abstract
 
