@@ -1,0 +1,237 @@
+% --- Identificacióon
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{MonografiaPUCE}[2025/10/04]
+
+% Paquete creado para el formato del Plan de Monografía
+% por: Andrés Merino
+% Perdón por no tener aún documentación 
+% de este paquete, cualquier pregunta, 
+% me la puedes hacer al correo 
+% aemerinot@puce.edu.ec
+
+% --- Paquetes requeridos
+
+\RequirePackage{iftex}
+
+\ifPDFTeX
+  % Compilación con pdfLaTeX
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{amssymb,amsmath}
+\else
+  % Compilación con XeLaTeX o LuaLaTeX
+  \RequirePackage{fontspec}
+  \setmainfont{Carlito}
+  \RequirePackage[math-style=upright]{unicode-math}
+  \setmathfont{Euler Math}[Scale=MatchLowercase]
+  \AtBeginDocument{\spanishucroman}
+\fi
+
+\RequirePackage[english,spanish,es-nolists,es-tabla]{babel}
+
+
+\RequirePackage{ifthen}
+
+\RequirePackage[svgnames]{xcolor}
+\RequirePackage{lipsum} 
+\RequirePackage{fancyhdr}
+\RequirePackage{setspace}
+\RequirePackage{textcase}
+\RequirePackage{graphicx}
+\RequirePackage[obeyspaces,spaces]{url}
+\RequirePackage{titlesec}
+\RequirePackage{float}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+    \newcolumntype{L}[1]{>{\hspace{0pt}\arraybackslash}m{#1}}
+\RequirePackage{caption}
+    \captionsetup{
+        labelfont=bf,
+        textfont=it,
+        labelsep=newline,
+        justification=raggedright,
+        singlelinecheck=false,
+        font=doublespacing,
+        position=top,
+    }
+\RequirePackage[colorlinks,allcolors=.,breaklinks]{hyperref}
+\RequirePackage[a4paper,margin=2.54cm]{geometry}
+
+% --- Variables
+\newcommand{\titulo}[1]%
+  {\newcommand\@titulo{#1}}
+
+\newcommand{\carrera}[1]%
+  {\newcommand\@carrera{#1}}
+  
+\newcommand{\titulocarrera}[1]%
+  {\newcommand\@titulocarrera{#1}}
+  
+\newcommand{\autor}[1]%
+  {\newcommand\@autor{#1}}
+
+\newcommand{\tutor}[1]%
+  {\newcommand\@tutor{#1}}
+  
+\newcommand{\fecha}[1]%
+  {\newcommand\@fecha{#1}}
+  
+\newcommand{\fechaC}[1]%
+  {\newcommand\@fechaC{#1}}
+  
+\newcommand{\area}[1]%
+  {\newcommand\@area{#1}}
+
+% --- Portadilla
+\newcommand\portadilla{%
+    \thispagestyle{empty}
+    \begin{center}\large
+		\includegraphics[width=4.5cm]{Figuras/logoPUCE-04-a}\\[2\baselineskip]
+		%
+        {\textbf{PONTIFICIA UNIVERSIDAD CATÓLICA DEL ECUADOR}}
+        \\[2\baselineskip]
+        %
+        {\textbf{FACULTAD DE CIENCIAS EXACTAS NATURALES Y AMBIENTALES}}
+        \\[2\baselineskip]
+        %
+        {\textbf{CARRERA DE \MakeTextUppercase\@carrera}}
+        \\[3\baselineskip]
+        %
+        \textbf{\@titulo}\\[3\baselineskip]
+        \textbf{Monografía previa a la obtención del título de \@titulocarrera}
+        \\[3\baselineskip]
+        %
+        \textbf{\@autor}\\[3\baselineskip]
+        %
+        \textbf{Quito, \@fecha}
+    \end{center}
+    \vspace*{\fill}
+    \newpage
+}
+
+% --- Certificación
+\newcommand{\certificacion}{
+    \vspace*{7.46cm}\noindent
+    Certifico que la Monografía de \@carrera{} de \textbf{\@autor{}} ha sido concluida de conformidad con las normas establecidas; por lo tanto, puede ser presentada para la calificación correspondiente.
+
+    \vspace{2cm}
+    \begin{center}
+        \settowidth{\unitlength}{\@tutor}
+        \rule{\unitlength}{0.5pt}\\
+        \@tutor\\
+        Tutor de la monografía\\
+        Quito, \@fechaC
+    \end{center}
+    \newpage
+}
+% --- Dedicatoria
+\newenvironment{dedicatoria}{
+    %\thispagestyle{empty}
+    \vspace*{\stretch{1}}
+    \begin{raggedleft}
+        \textbf{DEDICATORIA}
+
+        \itshape
+        \vspace{1\baselineskip}
+}
+{
+
+    \end{raggedleft}
+    \vspace*{\stretch{3}}
+    \newpage
+}
+% --- Agradecimiento
+\newenvironment{agradecimiento}{
+    %\thispagestyle{empty}
+    \chapter*{AGRADECIMIENTOS}
+
+    \vspace{1.5\baselineskip}
+}
+{
+    \newpage
+}
+
+
+% --- Párrafos
+\doublespacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{\baselineskip} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliografía
+\usepackage{csquotes}
+\usepackage[backend=biber,style=apa]{biblatex}
+\DeclareLanguageMapping{spanish}{spanish-apa} 
+\DefineBibliographyStrings{spanish}{%
+    andothers = {et al\adddot},
+}
+\DefineBibliographyExtras{spanish}{ 
+    % Código para corregir &
+    \setcounter{smartand}{1}
+    \let\lbx@finalnamedelim=\lbx@es@smartand
+    \let\lbx@finallistdelim=\lbx@es@smartand
+    % Código para corregir coma final
+    \renewcommand*{\apablx@ifrevnameappcomma}[2]{#2}
+    \let\finalandcomma=\empty
+}
+\DefineBibliographyStrings{spanish}{
+      references = {Referencias},
+}
+\defbibheading{bibliography}[\refname]{%
+      \chapter{#1}}
+\setlength{\bibhang}{\parindent}
+
+% --- Encabezado y Pie de página
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{13.6pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \rhead{\thepage}   % número arriba a la derecha
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+
+
+% chapter
+\titleformat{\chapter}
+  {\bfseries\centering\fontsize{14}{16}\selectfont}
+  {\thechapter.}{1.5em}{\MakeTextUppercase}
+\titlespacing*{\chapter}{0pt}{-40pt}{0pt}
+
+% SECCIONES
+\titleformat{\section}
+  {\bfseries\fontsize{11}{13}\selectfont}
+  {\thesection}{1.5em}{\MakeTextUppercase}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+
+% SUBSECCIONES
+\titleformat{\subsection}
+  {\bfseries\fontsize{11}{13}\selectfont}
+  {\thesubsection}{1em}{\MakeTextUppercase}
+\titlespacing*{\subsection}{\parindent}{0pt}{0pt}
+
+% SUBSUBSECCIONES
+\titleformat{\subsubsection}
+  {\bfseries\fontsize{11}{13}\selectfont}
+  {\thesubsubsection}{1em}{\MakeTextUppercase}
+\titlespacing*{\subsubsection}{\parindent}{0pt}{0pt}
+
+% TABLA DE CONTENIDOS
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{%
+  \begingroup
+  \setlength{\parskip}{0pt}%
+  \oldtableofcontents
+  \endgroup
+}
+\AtBeginDocument{\renewcommand{\contentsname}{\vspace*{0.5cm}Tabla de contenidos}}
+
+
+%Permita partir los "display"
+\allowdisplaybreaks

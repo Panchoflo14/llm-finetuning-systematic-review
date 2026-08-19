@@ -1,0 +1,211 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Apéndices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Apéndice A: Corpus completo de estudios incluidos}
+\addcontentsline{toc}{section}{Apéndice A: Corpus completo de estudios incluidos}
+
+Las tablas siguientes presentan los 84 estudios incluidos en la revisión sistemática, organizados por dominio de aplicación. Para cada estudio se reporta la técnica principal de \textit{fine-tuning}, la tarea evaluada, la métrica principal de evaluación declarada por los autores, el valor del \textit{baseline} de referencia y el resultado reportado, junto con el cambio porcentual relativo ($\Delta$\%) calculado sobre la misma métrica. Los valores negativos de $\Delta$\% indican que la técnica evaluada no superó al \textit{baseline}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{A.1 \quad Salud y Biomedicina \texorpdfstring{(n = 30)}{(n = 30)}}
+\addcontentsline{toc}{subsection}{A.1 Salud y Biomedicina}
+
+\begin{longtable}{p{3.5cm} p{1.7cm} p{3.0cm} p{1.8cm} p{1.3cm} p{1.3cm} p{0.9cm}}
+\caption{Corpus completo -- Salud y Biomedicina (n = 30).} \label{tab:apx_salud} \\
+\toprule
+\scriptsize\textbf{Referencia} & \scriptsize\textbf{Técnica} & \scriptsize\textbf{Tarea} & \scriptsize\textbf{Métrica principal} & \scriptsize\textbf{Baseline} & \scriptsize\textbf{Resultado} & \scriptsize\textbf{$\Delta$\%} \\
+\midrule
+\endfirsthead
+\multicolumn{7}{l}{\scriptsize\textit{Tabla \ref{tab:apx_salud} -- continuación}} \\[2pt]
+\toprule
+\scriptsize\textbf{Referencia} & \scriptsize\textbf{Técnica} & \scriptsize\textbf{Tarea} & \scriptsize\textbf{Métrica principal} & \scriptsize\textbf{Baseline} & \scriptsize\textbf{Resultado} & \scriptsize\textbf{$\Delta$\%} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{7}{r}{\scriptsize\textit{Continúa en la página siguiente}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{Full Fine-Tuning}}} \\[2pt]
+\scriptsize\autocite{sousa2025medical} & \scriptsize Full FT & \scriptsize Desidentificación & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{xu2024mentalllm} & \scriptsize IT & \scriptsize Clasif. salud mental & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{PEFT}}} \\[2pt]
+\scriptsize\autocite{nowak2025privacy} & \scriptsize\textit{LoRA} & \scriptsize Extracción clínica & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{zhang2025dialogue} & \scriptsize\textit{Adapter} & \scriptsize Diálogo con conocimiento & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{zhou2024adapter} & \scriptsize\textit{Adapter} & \scriptsize NER médico (chino) & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{zhao2025daft} & \scriptsize\textit{DAFT} & \scriptsize Desinformación en salud & \scriptsize Accuracy & \scriptsize 76,95\% & \scriptsize 84,77\% & \scriptsize +10,2\% \\
+\scriptsize\autocite{adhikary2025medical} & \scriptsize\textit{LoRA} & \scriptsize Q\&A salud menstrual & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{bayram2025medical} & \scriptsize\textit{LoRA} & \scriptsize Q\&A médico (turco) & \scriptsize Similitud & \scriptsize 0,4627 & \scriptsize 0,5151 & \scriptsize +11,3\% \\
+\scriptsize\autocite{elmitwalli2024ft} & \scriptsize\textit{LoRA} & \scriptsize Análisis de sentimiento & \scriptsize Accuracy & \scriptsize 0,65 & \scriptsize 0,94 & \scriptsize +44,6\% \\
+\scriptsize\autocite{khader2025ft} & \scriptsize\textit{LoRA} & \scriptsize Q\&A médico (árabe) & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{li2025tcmds} & \scriptsize\textit{LoRA} & \scriptsize Recom. fórmulas TCM & \scriptsize Precision & \scriptsize 0,3848 & \scriptsize 0,9924 & \scriptsize +157,9\% \\
+\scriptsize\autocite{qi2025transformi} & \scriptsize\textit{LoRA} & \scriptsize Diálogo terapia ABA & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{richterpechanski2025medication} & \scriptsize\textit{LoRA} & \scriptsize Extracción medicamentos & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{tong2025xuanhugpt} & \scriptsize\textit{LoRA} & \scriptsize Q\&A medicina TCM & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{tran2024bioinstruct} & \scriptsize\textit{LoRA} & \scriptsize Q\&A biomédico & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{vithanage2025medical} & \scriptsize\textit{LoRA} & \scriptsize NER clínico & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{xu2025cpel} & \scriptsize\textit{LoRA} & \scriptsize Diálogo geriátrico & \scriptsize ROUGE & \scriptsize 8,60\% & \scriptsize 34,96\% & \scriptsize +306,5\% \\
+\scriptsize\autocite{yang2024tcmgpt} & \scriptsize\textit{LoRA} & \scriptsize Medicina tradicional & \scriptsize Accuracy & \scriptsize 0,247 & \scriptsize 0,290 & \scriptsize +17,4\% \\
+\scriptsize\autocite{bao2025ecbti} & \scriptsize\textit{LoRA} & \scriptsize Diálogo terapéutico & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{liu2024cpmi} & \scriptsize P-Tuning v2 & \scriptsize Prescripción TCM & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{yang2025ceprompt} & \scriptsize\textit{Prompt Tuning} & \scriptsize Q\&A médico (KG) & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{bui2025ft} & \scriptsize\textit{LoRA} & \scriptsize Q\&A médico (vietnamita) & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{chao2025evaluating} & \scriptsize\textit{QLoRA} & \scriptsize Resumen clínico & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{dietrich2025ner} & \scriptsize\textit{QLoRA} & \scriptsize NER farmacovigilancia & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{dormus2025harnessing} & \scriptsize\textit{QLoRA} & \scriptsize Desidentificación & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{hou2024ft} & \scriptsize\textit{QLoRA} & \scriptsize Gen. cartas médicas & \scriptsize ROUGE-1 & \scriptsize 0,161 & \scriptsize 0,352 & \scriptsize +118,6\% \\
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{Múltiples}}} \\[2pt]
+\scriptsize\autocite{zhu2025fullft} & \scriptsize Full FT (GaLore) & \scriptsize Prev. lesiones deportivas & \scriptsize BLEU-4 & \scriptsize 29,415 & \scriptsize 29,589 & \scriptsize +0,6\% \\
+\scriptsize\autocite{rullo2025cardio} & \scriptsize\textit{LoRA}+GRPO & \scriptsize Educación cardiovascular (HIV) & \scriptsize Human Eval. Accuracy & \scriptsize 4,16 & \scriptsize 5,0 & \scriptsize +20,2\% \\
+\scriptsize\autocite{kuo2025medical} & \scriptsize\textit{LoRA}+GRPO & \scriptsize Reportes clínicos & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{savage2025dpo} & \scriptsize SFT+DPO & \scriptsize Razonamiento clínico & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\end{longtable}
+
+\begin{flushleft}
+\scriptsize
+\textit{Nota.} IT = \textit{Instruction Tuning}; Full FT = \textit{Full Fine-Tuning}; SFT = \textit{Supervised Fine-Tuning}; DPO = \textit{Direct Preference Optimization}; GRPO = \textit{Group Relative Policy Optimization}; DAFT = \textit{Domain-Augmented Fine-Tuning}; GaLore = \textit{Gradient Low-Rank Projection}; TCM = \textit{Traditional Chinese Medicine} (medicina tradicional china); KG = \textit{Knowledge Graph} (grafo de conocimiento); NER = \textit{Named Entity Recognition} (reconocimiento de entidades nombradas); ABA = \textit{Applied Behavior Analysis} (análisis conductual aplicado); Human Eval.\ Accuracy = exactitud evaluada por jueces humanos en escala numérica definida por cada estudio (escala 1-5 en \autocite{rullo2025cardio}). Los guiones (---) en las columnas Baseline, Resultado y $\Delta$\% indican que el estudio no reporta un par de comparación homogéneo que permita calcular una mejora relativa, ya sea porque evalúa múltiples técnicas o modelos sin un \textit{baseline} único de referencia, o porque los resultados no son directamente comparables entre sí.
+\end{flushleft}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{A.2 \quad Lenguaje y Humanidades \texorpdfstring{(n = 21)}{(n = 21)}}
+\addcontentsline{toc}{subsection}{A.2 Lenguaje y Humanidades}
+
+\begin{longtable}{p{3.5cm} p{1.7cm} p{3.0cm} p{1.8cm} p{1.3cm} p{1.3cm} p{0.9cm}}
+\caption{Corpus completo -- Lenguaje y Humanidades (n = 21).} \label{tab:apx_lh} \\
+\toprule
+\scriptsize\textbf{Referencia} & \scriptsize\textbf{Técnica} & \scriptsize\textbf{Tarea} & \scriptsize\textbf{Métrica principal} & \scriptsize\textbf{Baseline} & \scriptsize\textbf{Resultado} & \scriptsize\textbf{$\Delta$\%} \\
+\midrule
+\endfirsthead
+\multicolumn{7}{l}{\scriptsize\textit{Tabla \ref{tab:apx_lh} -- continuación}} \\[2pt]
+\toprule
+\scriptsize\textbf{Referencia} & \scriptsize\textbf{Técnica} & \scriptsize\textbf{Tarea} & \scriptsize\textbf{Métrica principal} & \scriptsize\textbf{Baseline} & \scriptsize\textbf{Resultado} & \scriptsize\textbf{$\Delta$\%} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{7}{r}{\scriptsize\textit{Continúa en la página siguiente}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{PEFT}}} \\[2pt]
+\scriptsize\autocite{chen2025adaptforever} & \scriptsize\textit{Adapter} & \scriptsize Clasificación GLUE & \scriptsize Promedio & \scriptsize 86,4 & \scriptsize 89,0 & \scriptsize +3,0\% \\
+\scriptsize\autocite{anghel2025courseeval} & \scriptsize\textit{LoRA} & \scriptsize Evaluación educativa & \scriptsize Human Eval. Accuracy & \scriptsize 7,94 & \scriptsize 8,21 & \scriptsize +3,4\% \\
+\scriptsize\autocite{chen2025ft} & \scriptsize\textit{LoRA} & \scriptsize Q\&A patrimonio cultural & \scriptsize ROUGE-L & \scriptsize 22,39\% & \scriptsize 47,85\% & \scriptsize +113,7\% \\
+\scriptsize\autocite{han2025ft} & \scriptsize\textit{LoRA} & \scriptsize Detección de duplicados & \scriptsize F1 & \scriptsize 82,02\% & \scriptsize 84,90\% & \scriptsize +3,5\% \\
+\scriptsize\autocite{harris2025benchmark} & \scriptsize\textit{LoRA} & \scriptsize Fake news (urdu) & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{kiziltepe2025ft} & \scriptsize\textit{LoRA} & \scriptsize Sentimiento (turco) & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{li2025keft} & \scriptsize\textit{LoRA} & \scriptsize Q\&A general & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{meng2025triplanet} & \scriptsize\textit{LoRA} & \scriptsize Detección de plagio & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{rathore2025ft} & \scriptsize\textit{LoRA} & \scriptsize Discurso de odio & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{wang2025lora} & \scriptsize DS-LoRA & \scriptsize Lenguaje ofensivo & \scriptsize Macro-F1 & \scriptsize 80,1 & \scriptsize 81,3 & \scriptsize +1,5\% \\
+\scriptsize\autocite{ye2025loraadv} & \scriptsize\textit{LoRA} & \scriptsize Texto ofensivo & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{zain2025ruold} & \scriptsize\textit{LoRA} & \scriptsize Lenguaje ofensivo (urdu) & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{jia2025agnostic} & \scriptsize Multi-PEFT & \scriptsize Clasif. multi-tarea & \scriptsize Macro-F1 & \scriptsize 0,8712 & \scriptsize 0,8736 & \scriptsize +0,3\% \\
+\scriptsize\autocite{cheng2025prompt} & \scriptsize\textit{Prompt Tuning} & \scriptsize KGQA multidominio & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{huang2024quant} & \scriptsize\textit{QLoRA} & \scriptsize Cuantización LLMs & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{khoboko2025ft} & \scriptsize\textit{QLoRA} & \scriptsize Traducción inglés-zulú & \scriptsize F1 & \scriptsize 10,52 & \scriptsize 42 & \scriptsize +299,2\% \\
+\scriptsize\autocite{paiola2025bode} & \scriptsize\textit{QLoRA} & \scriptsize Benchmarks port. bras. & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{sindhujan2025translation} & \scriptsize\textit{LoRA} & \scriptsize Quality Estimation (QE) sin referencia & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{Alineación}}} \\[2pt]
+\scriptsize\autocite{kadyrbek2025dpo} & \scriptsize DPO & \scriptsize Q\&A en kazajo & \scriptsize Accuracy & \scriptsize 56,5\% & \scriptsize 62,7\% & \scriptsize +11,0\% \\
+\scriptsize\autocite{shen2025ft} & \scriptsize ORPO & \scriptsize Análisis de sentimiento & \scriptsize Accuracy & \scriptsize 75,33\% & \scriptsize 86,67\% & \scriptsize +15,1\% \\
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{Múltiples}}} \\[2pt]
+\scriptsize\autocite{sun2025dialoguemllm} & \scriptsize\textit{LoRA}+IT & \scriptsize Reconoc. de emociones & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\end{longtable}
+
+\begin{flushleft}
+\scriptsize
+\textit{Nota.} IT = \textit{Instruction Tuning}; DPO = \textit{Direct Preference Optimization}; ORPO = \textit{Odds Ratio Preference Optimization}; DS-LoRA = variante de \textit{LoRA} propuesta por los autores; Multi-PEFT = combinación de múltiples métodos \textit{PEFT}; GLUE = \textit{General Language Understanding Evaluation}; KGQA = \textit{Knowledge Graph Question Answering}; QE = \textit{Quality Estimation} (estimación de calidad de traducción sin referencia); Human Eval.\ Accuracy = exactitud evaluada por jueces humanos en escala numérica definida por cada estudio (escala 0-10 en \autocite{anghel2025courseeval}). Los guiones (---) en las columnas Baseline, Resultado y $\Delta$\% indican que el estudio no reporta un par de comparación homogéneo que permita calcular una mejora relativa, ya sea porque evalúa múltiples técnicas o modelos sin un \textit{baseline} único de referencia, o porque los resultados no son directamente comparables entre sí.
+\end{flushleft}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{A.3 \quad Ciencias Exactas y Computación \texorpdfstring{(n = 20)}{(n = 20)}}
+\addcontentsline{toc}{subsection}{A.3 Ciencias Exactas y Computación}
+
+\begin{longtable}{p{3.5cm} p{1.7cm} p{3.0cm} p{1.8cm} p{1.3cm} p{1.3cm} p{0.9cm}}
+\caption{Corpus completo -- Ciencias Exactas y Computación (n = 20).} \label{tab:apx_cec} \\
+\toprule
+\scriptsize\textbf{Referencia} & \scriptsize\textbf{Técnica} & \scriptsize\textbf{Tarea} & \scriptsize\textbf{Métrica principal} & \scriptsize\textbf{Baseline} & \scriptsize\textbf{Resultado} & \scriptsize\textbf{$\Delta$\%} \\
+\midrule
+\endfirsthead
+\multicolumn{7}{l}{\scriptsize\textit{Tabla \ref{tab:apx_cec} -- continuación}} \\[2pt]
+\toprule
+\scriptsize\textbf{Referencia} & \scriptsize\textbf{Técnica} & \scriptsize\textbf{Tarea} & \scriptsize\textbf{Métrica principal} & \scriptsize\textbf{Baseline} & \scriptsize\textbf{Resultado} & \scriptsize\textbf{$\Delta$\%} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{7}{r}{\scriptsize\textit{Continúa en la página siguiente}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{PEFT}}} \\[2pt]
+\scriptsize\autocite{liu2025federated} & \scriptsize DP-LoRA & \scriptsize PEFT federado privado & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{ao2025lora} & \scriptsize SPLoRA & \scriptsize Seguridad en \textit{fine-tuning} & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{chen2025glr} & \scriptsize\textit{LoRA} & \scriptsize Razon. sobre grafos & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{elbakary2025mira} & \scriptsize\textit{LoRA} & \scriptsize Aprendizaje federado & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{gogineni2025ft} & \scriptsize\textit{LoRA} & \scriptsize Optimización de eficiencia en \textit{fine-tuning} (GPU) & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{iftikhar2025peft} & \scriptsize\textit{LoRA} & \scriptsize Sentimiento (FL) & \scriptsize Accuracy & \scriptsize 71,2\% & \scriptsize 73,8\% & \scriptsize +3,7\% \\
+\scriptsize\autocite{li2025federated} & \scriptsize\textit{LoRA} & \scriptsize PEFT federado & \scriptsize Avg. Acc. & \scriptsize 76,6\% & \scriptsize 75,4\% & \scriptsize -1,6\% \\
+\scriptsize\autocite{liu2025mpctf} & \scriptsize\textit{LoRA} & \scriptsize Entren. multi-parte & \scriptsize Accuracy & \scriptsize 14,25 & \scriptsize 65,43 & \scriptsize +359,2\% \\
+\scriptsize\autocite{seo2025lora} & \scriptsize\textit{LoRA} & \scriptsize Reducción de overhead en SFT con packing & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{wang2025ft} & \scriptsize\textit{LoRA} & \scriptsize Razon. sentido común & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{wu2024federated} & \scriptsize\textit{LoRA} & \scriptsize Clasif. datos sensibles & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{xiang2024sumllama} & \scriptsize\textit{LoRA} & \scriptsize Resumen bug reports & \scriptsize ROUGE-L & \scriptsize 39,69 & \scriptsize 41,01 & \scriptsize +3,3\% \\
+\scriptsize\autocite{prottasha2024peft} & \scriptsize Múltiples & \scriptsize Clasificación de texto y NLU multi-tarea & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{zou2025peft} & \scriptsize Múltiples & \scriptsize Ing. de software & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{jung2025prefix} & \scriptsize\textit{Prefix Tuning} & \scriptsize Clasificación GLUE & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{liu2025tasks} & \scriptsize\textit{Prompt Tuning}+\textit{LoRA} & \scriptsize Razon. SuperGLUE & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{choi2025agentreport} & \scriptsize\textit{QLoRA} & \scriptsize Resumen bug reports & \scriptsize ROUGE-1 Recall & \scriptsize 61,0\% & \scriptsize 84,6\% & \scriptsize +38,7\% \\
+\scriptsize\autocite{shen2025quant} & \scriptsize\textit{QLoRA} & \scriptsize Análisis de impacto de hiperparámetros en QLoRA & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{ulurmak2025ft} & \scriptsize\textit{QLoRA} & \scriptsize Gen. código (Flutter) & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{Múltiples}}} \\[2pt]
+\scriptsize\autocite{gorbatovski2024qa} & \scriptsize\textit{LoRA}+RLHF & \scriptsize Q\&A Stack Overflow & \scriptsize ROUGE-1 & \scriptsize 0,1889 & \scriptsize 0,1978 & \scriptsize +4,7\% \\
+\end{longtable}
+
+\begin{flushleft}
+\scriptsize
+\textit{Nota.} SFT = \textit{Supervised Fine-Tuning}; RLHF = \textit{Reinforcement Learning from Human Feedback}; DP-LoRA = \textit{Differentially Private LoRA}; SPLoRA = variante de \textit{LoRA} aplicada a la seguridad del ajuste fino; FL = \textit{Federated Learning} (aprendizaje federado); GLUE/SuperGLUE = \textit{benchmarks} de comprensión del lenguaje natural; Avg.\ Acc. = \textit{Average Accuracy} (exactitud promedio); Gen. = generación; Razon. = razonamiento; Entren. = entrenamiento; Ing. = ingeniería. Los guiones (---) en las columnas Baseline, Resultado y $\Delta$\% indican que el estudio no reporta un par de comparación homogéneo que permita calcular una mejora relativa, ya sea porque evalúa múltiples técnicas o modelos sin un \textit{baseline} único de referencia, o porque los resultados no son directamente comparables entre sí.
+\end{flushleft}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{A.4 \quad Industria y Negocios \texorpdfstring{(n = 13)}{(n = 13)}}
+\addcontentsline{toc}{subsection}{A.4 Industria y Negocios}
+
+\begin{longtable}{p{3.5cm} p{1.7cm} p{3.0cm} p{1.8cm} p{1.3cm} p{1.3cm} p{0.9cm}}
+\caption{Corpus completo -- Industria y Negocios (n = 13).} \label{tab:apx_ib} \\
+\toprule
+\scriptsize\textbf{Referencia} & \scriptsize\textbf{Técnica} & \scriptsize\textbf{Tarea} & \scriptsize\textbf{Métrica principal} & \scriptsize\textbf{Baseline} & \scriptsize\textbf{Resultado} & \scriptsize\textbf{$\Delta$\%} \\
+\midrule
+\endfirsthead
+\multicolumn{7}{l}{\scriptsize\textit{Tabla \ref{tab:apx_ib} -- continuación}} \\[2pt]
+\toprule
+\scriptsize\textbf{Referencia} & \scriptsize\textbf{Técnica} & \scriptsize\textbf{Tarea} & \scriptsize\textbf{Métrica principal} & \scriptsize\textbf{Baseline} & \scriptsize\textbf{Resultado} & \scriptsize\textbf{$\Delta$\%} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{7}{r}{\scriptsize\textit{Continúa en la página siguiente}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{PEFT}}} \\[2pt]
+\scriptsize\autocite{chitrakala2025rltweet} & \scriptsize\textit{LoRA} & \scriptsize Gen. redes sociales & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{han2025ft2} & \scriptsize\textit{LoRA} & \scriptsize Extracción geoespacial & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{lin2024lora} & \scriptsize\textit{LoRA} & \scriptsize Análisis de sentimiento & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{song2025lora} & \scriptsize\textit{LoRA} & \scriptsize Q\&A acuicultura & \scriptsize ROUGE-L & \scriptsize 0,26 & \scriptsize 0,35 & \scriptsize +34,6\% \\
+\scriptsize\autocite{sun2024mirachatglm} & \scriptsize\textit{LoRA} & \scriptsize Riesgo minero & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{wu2025lora} & \scriptsize\textit{LoRA} & \scriptsize Riesgo de corrosión & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{yang2025hierarchic} & \scriptsize\textit{LoRA} & \scriptsize IE textos militares & \scriptsize Macro-F1 & \scriptsize 0,2140 & \scriptsize 0,7020 & \scriptsize +228,0\% \\
+\scriptsize\autocite{zhang2025ft} & \scriptsize\textit{LoRA} & \scriptsize Q\&A turístico & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{zhou2025kg} & \scriptsize\textit{LoRA} & \scriptsize NER emergencias & \scriptsize F1 & \scriptsize 0,7874 & \scriptsize 0,8920 & \scriptsize +13,3\% \\
+\scriptsize\autocite{cao2025lora} & \scriptsize MoELoRA & \scriptsize Mantenimiento minero & \scriptsize ROUGE-L & \scriptsize 0,285 & \scriptsize 0,416 & \scriptsize +46,0\% \\
+\multicolumn{7}{l}{\scriptsize\textbf{\textit{Múltiples}}} \\[2pt]
+\scriptsize\autocite{peng2025keyword} & \scriptsize\textit{LoRA}+RLHF-PPO & \scriptsize Gen. texto legal & \scriptsize --- & \scriptsize --- & \scriptsize --- & \scriptsize --- \\
+\scriptsize\autocite{xiong2025lora} & \scriptsize\textit{LoRA}+RAG & \scriptsize Q\&A protección plantas & \scriptsize ROUGE-2 & \scriptsize 0,121 & \scriptsize 0,321 & \scriptsize +165,3\% \\
+\scriptsize\autocite{ren2025patent} & \scriptsize\textit{LoRA}+RLHF & \scriptsize Gen. de patentes & \scriptsize BLEU-4 & \scriptsize 11,663 & \scriptsize 45,360 & \scriptsize +288,9\% \\
+\end{longtable}
+
+\begin{flushleft}
+\scriptsize
+\textit{Nota.} MoELoRA = \textit{Mixture of Experts LoRA}; RLHF = \textit{Reinforcement Learning from Human Feedback}; RLHF-PPO = RLHF con \textit{Proximal Policy Optimization}; RAG = \textit{Retrieval-Augmented Generation}; IE = extracción de información; Gen. = generación. Los guiones (---) en las columnas Baseline, Resultado y $\Delta$\% indican que el estudio no reporta un par de comparación homogéneo que permita calcular una mejora relativa, ya sea porque evalúa múltiples técnicas o modelos sin un \textit{baseline} único de referencia, o porque los resultados no son directamente comparables entre sí.
+\end{flushleft}

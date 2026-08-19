@@ -1,0 +1,65 @@
+\usepackage[size=custom,width=90,height=120,scale=1.15]{beamerposter}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{multicol}
+
+% Colores PUCE
+\definecolor{azul}{HTML}{002F6C}
+
+% Estilo de bloques con título centrado en mayúsculas
+\setbeamercolor{block title}{fg=white,bg=azul}
+\setbeamercolor{block body}{fg=black,bg=white}
+\setbeamerfont{block title}{size=\Large,series=\bfseries}
+% TAMAÑO BASE BLOQUES (RESUMEN, DESARROLLO, CONCLUSIONES)
+% Ajuste fino: cambiar el primer número (pt) para subir/bajar la letra
+% \normalsize≈25pt, punto medio actual=27pt, \large≈30pt
+\setbeamerfont{block body}{size={\fontsize{29}{36}}}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}{\color{azul}$\blacksquare$}
+\setbeamertemplate{enumerate items}[default]
+
+% Espaciado de listas consistente con fuente \large
+\setlist[enumerate]{itemsep=0.6cm,parsep=0pt,topsep=0.3cm,leftmargin=1.5em}
+\setlist[itemize]{itemsep=0.3cm,parsep=0pt,topsep=0.3cm,leftmargin=1.5em}
+
+% Bibliografía
+\usepackage[
+    backend=biber,
+    style=apa
+]{biblatex}
+\defbibenvironment{bibliography}
+  {\list
+     {}
+     {\setlength{\leftmargin}{1cm}
+      \setlength{\itemindent}{0pt}
+      \setlength{\itemsep}{\bibitemsep}
+      \setlength{\parsep}{\bibparsep}}}
+  {\endlist}
+  {\item}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\DefineBibliographyStrings{spanish}{%
+    andothers = {et al\adddot},
+}
+\makeatletter
+\DefineBibliographyExtras{spanish}{
+    % Código para corregir &
+    \setcounter{smartand}{1}
+    \let\lbx@finalnamedelim=\lbx@es@smartand
+    \let\lbx@finallistdelim=\lbx@es@smartand
+    % Código para corregir coma final
+    \renewcommand*{\apablx@ifrevnameappcomma}[2]{#2}
+    \let\finalandcomma=\empty
+}
+\makeatother
+
+% TAMAÑO REFERENCIAS: bloque a dos columnas con letra reducida para ahorrar espacio
+% Esta línea controla SOLO el bloque de referencias, independiente del resto
+\renewcommand{\bibfont}{\fontsize{20}{23.5}\selectfont}

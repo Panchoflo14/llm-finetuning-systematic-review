@@ -1,0 +1,110 @@
+\documentclass[11pt,oneside]{book}
+
+\usepackage{MonografiaPUCE}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Paquetes adicionales
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc,chains,babel}
+\usepackage{prisma-flow-diagram}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+\definecolor{puce}{HTML}{1957D1}
+\definecolor{pucelight}{HTML}{EEF2FC}
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    breakatwhitespace=false,
+    frame=single,
+    backgroundcolor=\color{pucelight},
+    rulecolor=\color{puce},
+    xleftmargin=\parindent,
+    xrightmargin=\parindent,
+    framesep=6pt,
+    framerule=1.2pt,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Comandos adicionales
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Datos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titulo{Técnicas de fine-tuning para Large Language Models: revisión sistemática y evaluación comparativa}
+\carrera{Ciencia de Datos}
+\titulocarrera{Ingeniero en Ciencia de Datos}
+\autor{Francisco Javier Flores Sánchez}
+\tutor{Andrés Esteban Merino Toapanta}
+% Fecha portada
+\fecha{2026}
+% Fecha aprobación
+\fechaC{25 de junio de 2026}
+% Archivo de bibliografía
+\addbibresource{bibMonografia.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comentar las secciones que no se quieran mostrar
+\includeonly{
+    Capitulos/01-Resumen,
+    Capitulos/02-Introduccion,
+    Capitulos/03-Objetivos,
+    Capitulos/04-FundamentoTeorico,
+    Capitulos/05-Metodologia,
+    Capitulos/06-Resultados,
+    Capitulos/07-Conclusiones,
+    Capitulos/08-Apendices,
+}
+
+\begin{document}
+
+\frontmatter
+\portadilla
+\certificacion
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{dedicatoria}
+    A mi familia y a quienes conforman mi círculo cercano, \\
+    por creer en mí y en esta carrera, \\
+    mucho antes de que este proyecto existiera.
+\end{dedicatoria}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{agradecimiento}
+    A Andrés Merino, por haber sido un apoyo que trasciende el rol de tutor y profesor. Su amistad, orientación y cercanía en este mundo de la ciencia de datos, disciplina aún emergente en el país, marcaron profundamente mi formación. Agradezco su disposición constante, su paciencia y la confianza que depositó en mí y en este trabajo desde las primeras etapas de la carrera hasta la culminación de este proyecto.
+
+    A Bernardo Villegas, por ser un excelente primer jefe y, sobre todo, un amigo que me mostró que la ciencia de datos va mucho más allá de lo que se aprende en el aula. Su visión me ayudó a comprender la grandeza de esta carrera y su conexión con la inteligencia artificial y sus múltiples derivados. Le agradezco profundamente por guiarme en la elección del tema, por creer en este proyecto desde su concepción.
+\end{agradecimiento}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+\addtolength{\abovedisplayskip}{-2.2mm}
+\addtolength{\belowdisplayskip}{-2.2mm}
+
+
+\include{Capitulos/01-Resumen}
+\include{Capitulos/02-Introduccion}
+\include{Capitulos/03-Objetivos}
+\include{Capitulos/04-FundamentoTeorico}
+\include{Capitulos/05-Metodologia}
+\include{Capitulos/06-Resultados}
+\include{Capitulos/07-Conclusiones}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nocite{*}
+\printbibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{Capitulos/08-Apendices}
+
+\end{document}

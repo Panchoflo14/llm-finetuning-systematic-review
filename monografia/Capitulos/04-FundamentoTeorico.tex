@@ -1,0 +1,143 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Fundamento teórico}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+El presente capítulo establece el marco conceptual necesario para comprender las técnicas de \textit{fine-tuning} de \textit{Large Language Models}. Se inicia con una descripción de los LLMs y la arquitectura Transformer que los sustenta, seguida del paradigma de pre-entrenamiento y adaptación que motiva el \textit{fine-tuning}. A continuación se presenta una taxonomía de las nueve técnicas representativas analizadas en esta revisión. Posteriormente se define el marco de evaluación empleado en la literatura, incluyendo métricas de rendimiento y \textit{benchmarks} estándar.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Grandes modelos de lenguaje y la arquitectura Transformer}
+
+Los \textit{Large Language Models} son modelos de lenguaje basados en la arquitectura Transformer, que se ha establecido como el fundamento de los avances recientes en procesamiento de lenguaje natural. El bloque constitutivo central del Transformer consiste en una capa de atención multi-cabeza (\textit{multi-head attention}, MHA) seguida de una capa completamente conectada (\textit{feed-forward network}, FFN), ambas con conexiones residuales y normalización de capas para mejorar la capacidad de entrenamiento \parencite[p.~3]{Lialin2024}. El mecanismo de atención calcula un promedio ponderado normalizado de los \textit{tokens} de entrada, donde los pesos de atención se computan mediante el producto punto entre vectores de consulta (\textit{query}) y clave (\textit{key}) \parencite[p.~3]{Lialin2024}. Cada capa Transformer contiene dos sub-capas principales: la capa de atención y la capa \textit{feedforward}, ambas seguidas de una proyección hacia la dimensión original de entrada y una conexión residual \parencite[p.~3]{houlsby2019parameterefficienttransferlearningnlp}.
+
+Sobre esta arquitectura, los LLMs se entrenan mediante el paradigma de pre-entrenamiento y adaptación. En la fase de pre-entrenamiento, el modelo se entrena sobre corpus masivos de texto no etiquetado mediante objetivos auto-supervisados, adquiriendo representaciones lingüísticas generales que luego se transfieren a aplicaciones específicas \parencite[p.~220]{Ding2023}. La escala de estos modelos ha crecido de forma sostenida: los PLMs modernos emplean transformers con arquitecturas bidireccionales, autoregresivas o de secuencia a secuencia, entrenados sobre corpus de escala masiva \parencite[p.~220]{Ding2023}. Esta diversidad arquitectónica y de escala es precisamente lo que hace necesario un análisis sistemático de las técnicas de adaptación, ya que el comportamiento del fine-tuning varía según la arquitectura base y el dominio de aplicación.
+
+Sin embargo, el pre-entrenamiento por sí solo no es suficiente para obtener el comportamiento deseado en aplicaciones específicas. Un paradigma central en NLP consiste en el pre-entrenamiento a gran escala sobre datos de dominio general seguido de la adaptación a tareas o dominios particulares \parencite[p.~1]{hu2021loralowrankadaptationlarge}. Esta adaptación, conocida como \textit{fine-tuning}, constituye el objeto de estudio de la presente revisión sistemática.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Técnicas de \textit{fine-tuning}}
+
+Las técnicas de \textit{fine-tuning} se organizan en tres familias según su paradigma de adaptación, taxonomía que estructura tanto el marco teórico de esta revisión como la organización del corpus analizado. La primera familia es \textbf{\textit{Full Fine-Tuning}}, el enfoque tradicional que actualiza todos los parámetros del modelo pre-entrenado; en esta revisión se analiza también \textit{Supervised Fine-Tuning} (SFT), variante que aplica esta actualización completa sobre datos de instrucciones etiquetadas. La segunda familia es \textbf{\textit{Parameter-Efficient Fine-Tuning}} (PEFT), que agrupa métodos diseñados para reducir drásticamente el número de parámetros entrenables manteniendo un rendimiento comparable al \textit{full fine-tuning}; los cinco representantes analizados son LoRA, QLoRA, \textit{Adapter Layers}, \textit{Prefix Tuning} y \textit{Prompt Tuning}. La tercera familia son los \textbf{métodos de alineación}, que ajustan el comportamiento del modelo según preferencias humanas en lugar de optimizar directamente sobre una tarea; se analizan RLHF y DPO. Estas nueve técnicas no agotan el espacio de métodos de adaptación existentes, sino que representan las de mayor presencia en la literatura empírica reciente, tal como refleja el corpus de 84 estudios analizado en esta revisión. A continuación se describe cada técnica con su formulación matemática y mecanismo de adaptación.
+
+\subsection{\textit{Full Fine-Tuning} y \textit{Supervised Fine-Tuning}}
+
+\subsubsection{\textit{Full Fine-Tuning}}
+
+\textit{Full Fine-Tuning} constituye el enfoque tradicional de adaptación, donde todos los parámetros del modelo pre-entrenado se actualizan durante el entrenamiento sobre datos etiquetados de la tarea objetivo. El objetivo de optimización consiste en maximizar la verosimilitud sobre el conjunto de entrenamiento:
+\begin{equation}
+\max_{\phi} \sum_{(x,y) \in \mathcal{D}} \log p_\phi(y \mid x),
+\end{equation}
+donde $\phi$ representa el conjunto completo de parámetros del modelo, $\mathcal{D}$ es el dataset de entrenamiento, $x$ son las entradas e $y$ las salidas esperadas. Todos los pesos de la red se actualizan mediante gradiente descendente estocástico.
+
+Este enfoque constituye el \textit{baseline} (referencia de comparación) metodológico dado que maximiza la capacidad de adaptación del modelo. Sin embargo, a medida que los modelos crecen en escala, ``hacer \textit{fine-tuning} y almacenar todos los parámetros es prohibitivamente costoso y eventualmente se vuelve prácticamente inviable'' \parencite[p.~220]{Ding2023}. Adicionalmente, para $N$ tareas distintas el \textit{full fine-tuning} requiere mantener $N$ copias completas del modelo \parencite[p.~4]{houlsby2019parameterefficienttransferlearningnlp}, lo que representa un costo de almacenamiento proporcional al número de aplicaciones.
+
+\subsubsection{\textit{Supervised Fine-Tuning}}
+
+El \textit{Supervised Fine-Tuning} (SFT) es una variante de \textit{Full Fine-Tuning} que aplica la actualización completa de parámetros sobre datos de instrucciones etiquetadas en formato pregunta-respuesta. En el contexto del pipeline de alineación de modelos de lenguaje, SFT corresponde a la primera etapa: los anotadores humanos proporcionan demostraciones del comportamiento deseado y el modelo se ajusta sobre esos datos mediante aprendizaje supervisado \parencite[p.~6]{ouyang2022traininglanguagemodelsfollow}.
+
+A diferencia del \textit{fine-tuning} orientado a tareas específicas, el objetivo de SFT es que el modelo aprenda a seguir instrucciones en lenguaje natural. En la literatura reciente aparece tanto como técnica independiente, cuando el objetivo es mejorar la capacidad de seguir instrucciones sin pasos adicionales de alineación, como punto de partida para los métodos RLHF y DPO descritos más adelante en esta sección.
+
+\subsection{Métodos PEFT: LoRA, QLoRA, \textit{Adapter Layers}, \textit{Prefix Tuning} y \textit{Prompt Tuning}}
+
+\subsubsection{LoRA (\textit{Low-Rank Adaptation})}
+
+\textit{Low-Rank Adaptation} (LoRA) parte de la hipótesis de que las actualizaciones de pesos durante la adaptación poseen un rango intrínseco bajo, lo que permite representarlas mediante una descomposición de matrices de rango reducido en lugar de actualizar directamente los pesos del modelo \parencite[p.~2]{hu2021loralowrankadaptationlarge}. Sobre esta base, LoRA representa la actualización de una matriz de pesos $W_0 \in \mathbb{R}^{d \times k}$ como:
+\begin{equation}
+h = W_0 x + \Delta W x = W_0 x + BAx,
+\end{equation}
+donde $W_0$ son los pesos pre-entrenados que permanecen congelados, $B \in \mathbb{R}^{d \times r}$ y $A \in \mathbb{R}^{r \times k}$ son las matrices entrenables, con $r \ll \min(d, k)$ siendo el rango de la descomposición \parencite[p.~4]{hu2021loralowrankadaptationlarge}. La inicialización es estratégica: $A$ se inicializa con distribución Gaussiana aleatoria y $B$ con ceros, de modo que $\Delta W = BA$ es cero al inicio del entrenamiento, garantizando que el modelo comienza idéntico al pre-entrenado \parencite[p.~4]{hu2021loralowrankadaptationlarge}.
+
+En la fase de inferencia, las matrices $B$ y $A$ pueden fusionarse con $W_0$ para obtener $W = W_0 + BA$, sin introducir latencia adicional comparado con el modelo original \parencite[p.~2]{hu2021loralowrankadaptationlarge}. Con rangos muy bajos, como uno o dos, LoRA resulta suficiente incluso cuando la dimensión completa del modelo es tan alta como 12{,}288, como en GPT-3 175B, lo que lo convierte en un método eficiente tanto en almacenamiento como en cómputo \parencite[p.~2]{hu2021loralowrankadaptationlarge}.
+
+\subsubsection{QLoRA (\textit{Quantized Low-Rank Adaptation})}
+
+\textit{Quantized Low-Rank Adaptation} (QLoRA) extiende LoRA combinando la adaptación de bajo rango con cuantización de 4 bits del modelo base \parencite[p.~1]{dettmers2023qlora}. El método introduce tres innovaciones técnicas: cuantización NF4 (\textit{Normal Float 4}), un tipo de datos de 4 bits óptimo para pesos distribuidos normalmente; doble cuantización (\textit{double quantization}), que cuantiza las constantes de cuantización para reducir el uso de memoria; y optimizadores paginados (\textit{paged optimizers}), que gestionan los picos de memoria durante el entrenamiento \parencite[p.~2]{dettmers2023qlora}.
+
+En QLoRA el modelo base se mantiene congelado en precisión de 4 bits mientras los adaptadores LoRA se entrenan en BFloat16. La operación de paso hacia adelante se expresa como:
+\begin{equation}
+Y^{BF16} = X^{BF16} \cdot \text{dequant}(W^{NF4}) + X^{BF16} \cdot B^{BF16} A^{BF16},
+\end{equation}
+donde $W^{NF4}$ son los pesos del modelo base cuantizados a 4 bits, $B$ y $A$ son las matrices LoRA en BFloat16, y \textit{dequant} denota la operación de descuantización para el cómputo \parencite[p.~5]{dettmers2023qlora}. Los gradientes se propagan únicamente a través de las matrices LoRA; los pesos cuantizados permanecen sin actualización.
+
+\subsubsection{\textit{Adapter Layers}}
+
+Los módulos \textit{adapter}, propuestos por \textcite{houlsby2019parameterefficienttransferlearningnlp}, son capas adicionales insertadas en la arquitectura Transformer que mantienen congelados los pesos pre-entrenados. Se insertan dos módulos \textit{adapter} seriales en cada capa: uno tras la sub-capa de atención multi-cabeza y otro tras la sub-capa \textit{feedforward} \parencite[p.~3]{houlsby2019parameterefficienttransferlearningnlp}.
+
+La arquitectura de los \textit{adapters} implementa un diseño de cuello de botella (\textit{bottleneck}): proyectan las características originales de dimensión $d$ a una dimensión menor $m$, aplican una no linealidad, y proyectan de vuelta a $d$ dimensiones \parencite[p.~3]{houlsby2019parameterefficienttransferlearningnlp}:
+\begin{equation}
+h \leftarrow f(hW_{\text{down}})W_{\text{up}} + h,
+\end{equation}
+donde $W_{\text{down}} \in \mathbb{R}^{d \times m}$ es la proyección descendente, $W_{\text{up}} \in \mathbb{R}^{m \times d}$ es la proyección ascendente, $f(\cdot)$ es una función de activación no lineal, y el término $+h$ representa la conexión residual interna \parencite[p.~3]{houlsby2019parameterefficienttransferlearningnlp}. En la práctica se utiliza entre el 0.5 y el 8\% de los parámetros del modelo original, y la inicialización cercana a cero garantiza que el módulo comienza como una función identidad aproximada, preservando el comportamiento del modelo pre-entrenado \parencite[p.~3]{houlsby2019parameterefficienttransferlearningnlp}.
+
+\subsubsection{\textit{Prefix Tuning}}
+
+\textit{Prefix Tuning} mantiene congelados todos los parámetros del modelo y optimiza una secuencia de vectores continuos específicos de tarea, denominados \textit{prefix}, que se anteponen a las activaciones de cada capa Transformer, permitiendo que los \textit{tokens} subsecuentes atiendan al \textit{prefix} como si fueran \textit{virtual tokens} \parencite[p.~4582]{li-liang-2021-prefix}. Para cada posición $i$ en la secuencia, la activación se define como:
+\begin{equation}
+h_i = \begin{cases}
+P_\theta[i, :], & \text{si } i \in P_{idx} \\
+\text{LM}_\phi(z_i, h_{<i}), & \text{en otro caso}
+\end{cases},
+\end{equation}
+donde $P_\theta$ es una matriz entrenable de dimensión $|P_{idx}| \times \text{dim}(h_i)$, $P_{idx}$ denota los índices del \textit{prefix}, y $\text{LM}_\phi$ representa el modelo de lenguaje con parámetros congelados \parencite[p.~4585]{li-liang-2021-prefix}. El \textit{prefix} guía el comportamiento generativo del modelo sin modificar sus pesos, actuando como contexto continuo optimizable que influye tanto en la codificación de la entrada como en la distribución de los \textit{tokens} generados.
+
+En términos de eficiencia paramétrica, modificando solo el 0.1\% de los parámetros \textit{Prefix Tuning} alcanza un rendimiento comparable al \textit{full fine-tuning} en escenarios con datos completos y supera al \textit{fine-tuning} en escenarios de datos limitados \parencite[p.~4582]{li-liang-2021-prefix}.
+
+\subsubsection{\textit{Prompt Tuning}}
+
+\textit{Prompt Tuning} \parencite[p.~3046]{lester-etal-2021-power} optimiza exclusivamente una secuencia de \textit{tokens} virtuales continuos (\textit{soft prompt}) que se anteponen a la entrada, manteniendo todos los parámetros del modelo congelados. A diferencia de \textit{Prefix Tuning}, que inserta vectores entrenables en cada capa Transformer, \textit{Prompt Tuning} opera únicamente en la capa de \textit{embeddings} de entrada: los \textit{tokens} entrenables se concatenan con los \textit{tokens} de la tarea y el conjunto se procesa a través del modelo sin modificación:
+\begin{equation}
+h_0 = [P_\theta;\, E(x)],
+\end{equation}
+donde $P_\theta \in \mathbb{R}^{l \times d}$ es la matriz de \textit{prompt} entrenable de longitud $l$ y dimensión $d$, $E(x)$ es la representación de \textit{embedding} de la entrada $x$, y $[\cdot;\cdot]$ denota la concatenación \parencite[p.~3047]{lester-etal-2021-power}. Solo los parámetros de $P_\theta$ se actualizan durante el entrenamiento, representando una fracción mínima del total de parámetros del modelo.
+
+\textcite{lester-etal-2021-power} demostraron que con modelos de escala suficiente, \textit{Prompt Tuning} alcanza un rendimiento comparable al \textit{full fine-tuning}, con la ventaja de que un único modelo base puede servir múltiples tareas simplemente intercambiando el \textit{soft prompt} \parencite[p.~3046]{lester-etal-2021-power}. La diferencia conceptual respecto a \textit{Prefix Tuning} es que este último propaga vectores entrenables a través de todas las capas del Transformer, mientras que \textit{Prompt Tuning} restringe la intervención a la capa de entrada.
+
+\subsection{Métodos de alineación: RLHF y DPO}
+
+\subsubsection{RLHF (\textit{Reinforcement Learning from Human Feedback})}
+
+RLHF es una metodología para alinear modelos de lenguaje con preferencias humanas, abordando la discrepancia entre el objetivo de pre-entrenamiento y el comportamiento deseado en aplicaciones prácticas \parencite{ouyang2022traininglanguagemodelsfollow}. El proceso se estructura en tres etapas secuenciales \parencite[p.~6]{ouyang2022traininglanguagemodelsfollow}: en la primera se recolectan demostraciones humanas del comportamiento deseado y se entrena una política supervisada; en la segunda se recopilan comparaciones entre pares de salidas del modelo donde evaluadores humanos indican sus preferencias, y se entrena un modelo de recompensa para predecir la salida preferida; en la tercera se optimiza la política usando la señal del modelo de recompensa mediante el algoritmo PPO (\textit{Proximal Policy Optimization}), bajo el siguiente objetivo:
+\begin{equation}
+\max_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y|x)}[r(x,y)] - \beta \mathbb{D}_{\text{KL}}[\pi_\theta(y|x) \| \pi_{\text{ref}}(y|x)],
+\end{equation}
+donde $\pi_\theta$ es la política optimizada, $r(x,y)$ es el modelo de recompensa, $\pi_{\text{ref}}$ es la política de referencia tras el \textit{Supervised Fine-Tuning}, y $\beta$ controla la restricción de divergencia KL que previene que el modelo se desvíe excesivamente de la política de referencia \parencite[p.~3]{rafailov2023direct}.
+
+\subsubsection{DPO (\textit{Direct Preference Optimization})}
+
+DPO es una alternativa simplificada a RLHF que elimina la necesidad de entrenar un modelo de recompensa explícito y de emplear algoritmos de aprendizaje por refuerzo. El método utiliza un cambio de variables para definir la pérdida de preferencias directamente como función de la política, permitiendo optimizar un modelo de lenguaje desde datos de preferencias humanas mediante un objetivo simple de entropía cruzada binaria, sin muestrear de la política durante el entrenamiento \parencite[p.~2]{rafailov2023direct}. El objetivo de optimización DPO se define como:
+\begin{equation}
+\mathcal{L}_{\text{DPO}}(\pi_\theta; \pi_{\text{ref}}) = -\mathbb{E}_{(x,y_w,y_l) \sim \mathcal{D}}\left[\log \sigma\left(\beta \log \frac{\pi_\theta(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \beta \log \frac{\pi_\theta(y_l|x)}{\pi_{\text{ref}}(y_l|x)}\right)\right],
+\end{equation}
+donde $\sigma$ es la función logística, $(x, y_w, y_l)$ representa un triplete de \textit{prompt}, respuesta preferida y respuesta no preferida, $\pi_\theta$ es la política optimizada, $\pi_{\text{ref}}$ es la política de referencia, y $\beta$ controla la restricción de divergencia KL implícita \parencite[p.~4]{rafailov2023direct}. El gradiente de esta pérdida incrementa la verosimilitud de las completaciones preferidas $y_w$ y disminuye la de las no preferidas $y_l$, ponderando cada ejemplo según qué tan incorrectamente el modelo de recompensa implícito ordena las completaciones \parencite[p.~4]{rafailov2023direct}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Métricas de evaluación}
+
+La evaluación del rendimiento de las técnicas de \textit{fine-tuning} en la literatura emplea métricas específicas según el tipo de tarea evaluada. En esta revisión se presentan las métricas de mayor frecuencia en el corpus analizado, seleccionadas según la jerarquía de métricas empleada en la extracción de datos: para cada estudio se identificó la métrica principal declarada por los autores o, en su ausencia, la de mayor prioridad según el tipo de tarea. Las métricas se agrupan en dos categorías: clasificación y generación de texto.
+
+\subsection{Métricas de clasificación}
+
+Las métricas de clasificación evalúan la corrección de las predicciones discretas del modelo. Son especialmente frecuentes en tareas de procesamiento de lenguaje natural donde el objetivo es asignar una etiqueta discreta a una entrada de texto.
+
+La \textbf{\textit{accuracy}} (exactitud) mide la proporción de predicciones correctas sobre el total de instancias evaluadas, tomando valores entre 0 y 1, donde valores más altos indican mejor rendimiento. Constituye la métrica más directa para tareas de clasificación con clases balanceadas.
+
+El \textbf{F1 Score} combina la \textit{precision} (precisión) y el \textit{recall} (recuperación) del modelo mediante su media armónica:
+\begin{equation}
+F_1 = \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}},
+\end{equation}
+donde \textit{precision} mide la proporción de predicciones positivas correctas y \textit{recall} mide la proporción de positivos reales correctamente identificados \parencite[p.~27]{Chang2024}. El F1 Score varía entre 0 y 1, donde valores más altos indican mejor balance entre ambas métricas. Es especialmente útil cuando existe desbalance de clases, siendo frecuente en tareas de extracción de información y clasificación de texto especializado.
+
+\subsection{Métricas de generación de texto}
+
+Las métricas de generación de texto evalúan la calidad del texto producido por el modelo mediante comparación con referencias humanas.
+
+\textbf{BLEU} (\textit{Bilingual Evaluation Understudy}) evalúa la calidad del texto generado mediante la precisión de n-gramas modificada entre el texto candidato y referencias humanas, combinada con una penalización por brevedad para evitar que textos cortos obtengan puntuaciones artificialmente altas \parencite[p.~5]{papineni-etal-2002-bleu}. BLEU puede expresarse como proporción entre 0 y 1 o como porcentaje entre 0 y 100 según la implementación y las convenciones del estudio; en ambos casos valores más altos indican mayor solapamiento léxico con las referencias. En el corpus analizado en esta revisión ambas notaciones aparecen, por lo que los valores de BLEU se interpretan según la escala reportada por cada estudio.
+
+\textbf{ROUGE} (\textit{Recall-Oriented Understudy for Gisting Evaluation}) adopta un enfoque orientado al \textit{recall}: cuantifica la proporción de n-gramas de las referencias que aparecen en el texto candidato \parencite[p.~1]{lin-2004-rouge}. La variante ROUGE-L utiliza la subsecuencia común más larga (\textit{Longest Common Subsequence}) entre el candidato y la referencia, capturando estructura secuencial más allá de la co-ocurrencia simple de n-gramas \parencite[p.~2]{lin-2004-rouge}. ROUGE puede expresarse como proporción entre 0 y 1 o como porcentaje entre 0 y 100 según la implementación y las convenciones del estudio; en ambos casos valores más altos indican mayor solapamiento con las referencias humanas. En el corpus analizado en esta revisión ambas notaciones aparecen, por lo que los valores de ROUGE se interpretan según la escala reportada por cada estudio.
+
+\textbf{BERTScore} supera las limitaciones de las métricas basadas en n-gramas al calcular la similitud semántica mediante \textit{embeddings} contextuales de modelos pre-entrenados como BERT \parencite[p.~1]{zhang2020bertscore}. Para una referencia $x$ y un candidato $\hat{x}$, BERTScore computa precisión, \textit{recall} y F1 mediante correspondencia greedy entre \textit{tokens}:
+\begin{equation}
+R_{\text{BERT}} = \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^\top \hat{\mathbf{x}}_j, \quad
+P_{\text{BERT}} = \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^\top \hat{\mathbf{x}}_j, \quad
+F_{\text{BERT}} = 2\frac{P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text{BERT}} + R_{\text{BERT}}},
+\end{equation}
+donde $\mathbf{x}_i$ y $\hat{\mathbf{x}}_j$ son los vectores de \textit{embedding} contextual de cada \textit{token} \parencite[p.~4]{zhang2020bertscore}. BERTScore varía entre 0 y 1, donde valores más altos indican mayor similitud semántica con la referencia. A diferencia de BLEU y ROUGE, BERTScore puede identificar correspondencias semánticas entre palabras que difieren en forma superficial, como sinónimos o paráfrasis, lo que lo hace especialmente adecuado para evaluación en dominios especializados.

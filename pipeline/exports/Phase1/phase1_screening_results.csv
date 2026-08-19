@@ -1,0 +1,140 @@
+title,evaluador_sistematico,revisor_academico,investigador_ml,experto_metodologico,veredicto_final
+ENHANCING ASPECT-BASED FINANCIAL SENTIMENT ANALYSIS THROUGH CONTRASTIVE LEARNING,True,True,False,False,Undecided
+Vision-Language Model for Generating Textual Descriptions From Clinical Images: Model Development and Validation Study,False,True,False,False,Rejected
+SumLLaMA: Efficient Contrastive Representations and Fine-Tuned Adapters for Bug Report Summarization,True,True,True,True,Accepted
+TCM-GPT: Efficient pre-training of large language models for domain adaptation in Traditional Chinese Medicine,True,True,True,True,Accepted
+Assessing and Optimizing Large Language Models on Spondyloarthritis Multi-Choice Question Answering: Protocol for Enhancement and Assessment,False,True,False,False,Rejected
+A New Adapter Tuning of Large Language Model for Chinese Medical Named Entity Recognition,True,True,True,True,Accepted
+Enhanced Sentiment Intensity Regression Through LoRA Fine-Tuning on Llama 3,True,True,False,False,Undecided
+Evaluating Medical Entity Recognition in Health Care: Entity Model Quantitative Study,False,False,False,False,Rejected
+Enhancing sentiment and intent analysis in public health via fine-tuned Large Language Models on tobacco and e-cigarette-related tweets,False,True,True,True,Accepted
+Fine-tuning a local LLaMA-3 large language model for automated privacy-preserving physician letter generation in radiation oncology,True,True,True,True,Accepted
+Assessing the Efficacy of Adapters in Cross-Language Transfer Learning For Low-Resource Automatic Speech Recognition,False,False,False,False,Rejected
+PowerPulse: Power energy chat model with LLaMA model fine-tuned on Chinese and power sector domain knowledge,True,True,True,True,Accepted
+Mental-LLM: Leveraging Large Language Models for Mental Health Prediction via Online Text Data,True,True,True,True,Accepted
+Beyond Event-Centric Narratives: Advancing Arabic Story Generation with Large Language Models and Beam Search,False,True,False,False,Rejected
+DIFFERENTIALLY PRIVATE FINE-TUNING OF LANGUAGE MODELS,False,True,False,False,Rejected
+Two-stage fine-tuning with ChatGPT data augmentation for learning class-imbalanced data,False,True,False,False,Rejected
+BioInstruct: instruction tuning of large language models for biomedical natural language processing,True,True,True,True,Accepted
+Relation Extraction in Underexplored Biomedical Domains: A Diversity-optimized Sampling and Synthetic Data Generation Approach,False,True,False,True,Undecided
+A Survey on Stability of Learning with Limited Labelled Data and its Sensitivity to the Effects of Randomness,False,False,False,False,Rejected
+An Application Programming Interface (API) Sensitive Data Identification Method Based on the Federated Large Language Model,True,True,True,True,Accepted
+Improving question answering in programming domain with pretrained language model finetuning using structured diverse online forum data,True,True,True,True,Accepted
+CPMI-ChatGLM: parameter-efficient fine-tuning ChatGLM with Chinese patent medicine instructions,True,True,True,True,Accepted
+Fine-tuning protein language models boosts predictions across diverse tasks,False,True,False,False,Rejected
+Lottery Rank-Pruning Adaptation Parameter Efficient Fine-Tuning,False,True,False,False,Rejected
+LIPT: Improving Prompt Tuning with Late Inception Reparameterization,False,True,True,False,Undecided
+MIRA-ChatGLM: A Fine-Tuned Large Language Model for Intelligent Risk Assessment in Coal Mining,True,True,True,True,Accepted
+Parameter-efficient fine-tuning of large language models using semantic knowledge tuning,False,True,True,True,Accepted
+An empirical study of LLaMA3 quantization: from LLMs to MLLMs,True,True,True,True,Accepted
+Improved Fine-Tuned Reinforcement Learning From Human Feedback Using Prompting Methods for News Summarization,True,True,True,True,Accepted
+Prefix Tuning Using Residual Reparameterization,True,True,True,True,Accepted
+Advancing Sentiment Analysis for Low-Resource Languages Using Fine-Tuned LLMs: A Case Study of Customer Reviews in Turkish Language,True,True,True,True,Accepted
+Full-Parameter Fine-Tuning Method of LLMs for Sports Injury Prevention and Treatment,False,True,True,True,Accepted
+"Harnessing Moderate-Sized Language Models for Reliable Patient Data Deidentification in Emergency Department Records: Algorithm Development, Validation, and Implementation Study",False,True,True,True,Accepted
+LoRA-Adv: Boosting Text Classification in Large Language Models Through Adversarial Low-Rank Adaptations,True,True,True,True,Accepted
+LLMs on a Budget: System-Level Approaches to Power-Efficient and Scalable Fine-Tuning,True,True,True,True,Accepted
+Research on the Construction and Application of Earthquake Emergency Information Knowledge Graph Based on Large Language Models,True,True,False,True,Accepted
+Menstrual Health Education Using a Specialized Large Language Model in India: Development and Evaluation Study of MenstLLaMA,True,True,True,True,Accepted
+DialogueMLLM: Transforming Multimodal Emotion Recognition in Conversation Through Instruction-Tuned MLLM,True,True,True,True,Accepted
+Training Language Models for Estimating Priority Levels in Ultrasound Examination Waitlists: Algorithm Development and Validation,False,True,False,False,Rejected
+Enhancing Sustainability in LLM Training: Leveraging Federated Learning and Parameter-Efficient Fine-Tuning,True,True,True,True,Accepted
+"Transforming Applied Behavior Analysis Therapy: An Internet of Things-Guided, Retrieval-Augmented Large Language Model Framework",True,True,True,True,Accepted
+"Interdisciplinary Development and Fine-Tuning of CARDIO, a Large Language Model for Cardiovascular Health Education in HIV Care: Tutorial",True,True,True,True,Accepted
+Efficient and Effective Adaptation of Multimodal Foundation Models in Sequential Recommendation,False,False,False,False,Rejected
+Fine-Tuning Methods for Large Language Models in Clinical Medicine by Supervised Fine-Tuning and Direct Preference Optimization: Comparative Evaluation,True,True,True,True,Accepted
+Benchmarking Large Language Models for Polymer Property Predictions,True,True,False,True,Accepted
+Tasks-Embedded Reparameterization: A Novel Framework for Task-Specific Transfer Enhancement With Multitask Prompt Learning,True,True,True,True,Accepted
+Enhancing Contextual Data Analysis through Retrieval-Augmented Fine-Tuning of Large Language Models,True,True,True,True,Accepted
+"Adapting Large Language Models for Arabic: Comparative Evaluation, Fine-Tuning, and Ethical Deployment",True,True,True,True,Accepted
+A GRPO-Based Approach to Hierarchical Knowledge Distillation in Military Information Extraction,True,True,True,True,Accepted
+Symbiotic Tuning: A Simple Approach for Enhancing Task Performance of Side-Tuning,False,True,True,False,Undecided
+Synchronizing LLM-based semantic knowledge bases via secure federated fine-tuning in semantic communication,True,True,True,True,Accepted
+CE-Prompt: Enhance prompt expression stability by multiple understanding,True,True,True,True,Accepted
+TriGen: A Semantic-Feedback Collaborative LLM Test Case Generation Model,True,True,True,True,Accepted
+Detecting LLM-Generated Text with Trigram–Cosine Stylometric Delta: An Unsupervised and Interpretable Approach,False,False,False,False,Rejected
+A Keyword-Guided Training Approach to Large Language Models for Judicial Document Generation,True,True,True,True,Accepted
+LLM4WM: Adapting LLM for Wireless Multi-Tasking,True,True,True,True,Accepted
+Optimizing Fine-Tuning in Quantized Language Models: An In-Depth Analysis of Key Variables,True,True,True,True,Accepted
+Enhancing semantical text understanding with fine-tuned large language models: A case study on Quora Question Pair duplicate identification,True,True,True,True,Accepted
+Privacy-ensuring Open-weights Large Language Models Are Competitive with Closed-weights GPT-4o in Extracting Chest Radiography Findings from Free-Text Reports,True,True,False,True,Accepted
+Activation-Guided Low-Rank Parameter Adaptation for Efficient Model Fine-Tuning,True,True,True,True,Accepted
+MIRA: A Method of Federated Multi-Task Learning for Large Language Models,True,True,True,True,Accepted
+Task-Agnostic Adaptive Activation Scaling Network for LLMs,True,True,True,True,Accepted
+AdaptForever: Elastic and Mutual Learning for Continuous NLP Task Mastery,True,True,True,False,Accepted
+The Bode Family of Large Language Models: Investigating the Frontiers of LLMs in Brazilian Portuguese,True,True,True,True,Accepted
+Application of large language models in clinical record correction: a comprehensive study on various retraining methods,True,True,True,True,Accepted
+Large Language Models for Electronic Health Record De-Identification in English and German,True,True,False,True,Accepted
+Fine-Tuning LLM-Assisted Chinese Disaster Geospatial Intelligence Extraction and Case Studies,True,True,True,True,Accepted
+Performance and Reproducibility of Large Language Models in Named Entity Recognition: Considerations for the Use in Controlled Environments,False,True,True,True,Accepted
+Differentially Private Low-Rank Adaptation of Large Language Model Using Federated Learning,True,True,True,True,Accepted
+Enhancing Plant Protection Knowledge with Large Language Models: A Fine-Tuned Question-Answering System Using LoRA,True,True,True,True,Accepted
+Reasoning-Driven Food Energy Estimation via Multimodal Large Language Models †,True,True,True,True,Accepted
+Large language model for patent concept generation,True,True,True,True,Accepted
+A Construction Method for a Coal Mining Equipment Maintenance Large Language Model Based on Multi-Dimensional Prompt Learning and Improved LoRA,True,True,True,True,Accepted
+Evaluating large language models in echocardiography reporting: opportunities and challenges,True,True,True,True,Accepted
+"The Development of Small-Scale Language Models for Low-Resource Languages, with a Focus on Kazakh and Direct Preference Optimization",True,True,True,True,Accepted
+Fine-tuning large language models for improved health communication in low-resource languages,True,True,True,True,Accepted
+EVCharging-GPT: Predicting Electric Vehicle User Charging Behavior Using Large Language Models,True,True,False,True,Accepted
+Artificial intelligence large model for logging curve reconstruction,True,True,False,True,Accepted
+Optimizing translation for low-resource languages: Efficient fine-tuning with custom prompt engineering in large language models,True,True,True,True,Accepted
+Adapting Generative Large Language Models for Information Extraction from Unstructured Electronic Health Records in Residential Aged Care: A Comparative Analysis of Training Approaches,False,True,True,True,Accepted
+Comparative analysis of methodologies and approaches in recommender systems utilizing large language models,False,False,False,False,Rejected
+GLR: Graph Chain-of-Thought with LoRA Fine-Tuning and Confidence Ranking for Knowledge Graph Completion,True,True,True,True,Accepted
+"RU-OLD: A Comprehensive Analysis of Offensive Language Detection in Roman Urdu Using Hybrid Machine Learning, Deep Learning, and Transformer Models",True,True,True,True,Accepted
+Effective Multi-Class Sentiment Analysis Using Fine-Tuned Large Language Model with KNIME Analytics Platform,True,True,True,True,Accepted
+Leveraging Asymmetric Adaptation with Dynamic Sparse LoRA for Enhanced Nuance in LLM-Based Offensive Language Detection,True,True,True,True,Accepted
+EIM: An effective solution for improving multi-modal large language models,False,True,False,True,Undecided
+Diffusion Preference Alignment via Attenuated Kullback–Leibler Regularization,False,False,False,False,Rejected
+Fine-Tuning Pre-Trained Large Language Models for Price Prediction on Network Freight Platforms,True,True,True,True,Accepted
+"CPEL: A Causality-Aware, Parameter-Efficient Learning Framework for Adaptation of Large Language Models with Case Studies in Geriatric Care and Beyond",True,True,True,True,Accepted
+A Fault Diagnosis Framework for Waterjet Propulsion Pump Based on Supervised Autoencoder and Large Language Model,False,False,False,False,Rejected
+Domain-Specialized Large Language Model for Corrosion Analysis: Construction and Evaluation of Corr-Lora-RAG,True,True,True,True,Accepted
+MPCTF: A Multi-Party Collaborative Training Framework for Large Language Models,True,True,False,True,Accepted
+Automated Clinical Trial Data Analysis and Report Generation by Integrating Retrieval-Augmented Generation (RAG) and Large Language Model (LLM) Technologies,True,True,True,True,Accepted
+Experimental Evaluation of Parameter-Efficient Fine-Tuning for Software Engineering Tasks,False,True,True,True,Accepted
+radio-llava: Advancing vision-language models for radio astronomical source analysis,False,True,False,False,Rejected
+Efficient Tuning of Large Language Models for Knowledge-Grounded Dialogue Generation,True,True,True,True,Accepted
+Chain-of-Thought Augmented Fine‑Tuning of a Distilled Llama‑8B Model for SIEM Detection Query Generation,False,True,True,True,Accepted
+Large language models are few-shot multivariate time series classifiers,True,True,True,True,Accepted
+TriPlaNet: Enhancing machine-paraphrasing plagiarism detection through triplet network and contrastive learning,True,True,False,True,Accepted
+Medication information extraction using local large language models,True,True,True,True,Accepted
+Research on the optimization of seamless steel pipe cooling process based on large language models,False,True,False,False,Rejected
+Enhancing Ancient Ceramic Knowledge Services: A Question Answering System Using Fine-Tuned Models and GraphRAG,True,True,True,True,Accepted
+RL-TweetGen: A Socio-Technical Framework for Engagement-Optimized Short Text Generation in Digital Commerce Using Large Language Models and Reinforcement Learning,True,True,True,True,Accepted
+A Method for Load Forecasting of Distribution Transformers Based on Parameter-Efficient Fine-Tuning of Large Language Models in Power System,False,True,False,False,Rejected
+KG-SR-LLM: Knowledge-Guided Semantic Representation and Large Language Model Framework for Cross-Domain Bearing Fault Diagnosis,True,True,True,True,Accepted
+VTLLM: A Vessel Trajectory Prediction Approach Based on Large Language Models,True,True,True,True,Accepted
+KEFT: Knowledge-Enhanced Fine-Tuning for Large Language Models in Domain-Specific Question Answering,True,True,True,True,Accepted
+Toward digital twins in the intensive care unit: a medication management case study,True,True,True,True,Accepted
+GLM-Based Fake Cybersecurity Threat Intelligence Detection Models and Algorithms,False,False,False,False,Rejected
+Reference-Less Evaluation of Machine Translation: Navigating Through the Resource-Scarce Scenarios,True,True,True,True,Accepted
+Eliminating Packing-Aware Masking via LoRA-Based Supervised Fine-Tuning of Large Language Models,True,True,True,True,Accepted
+CourseEvalAI: Rubric-Guided Framework for Transparent and Consistent Evaluation of Large Language Models,True,True,True,True,Accepted
+Integrating clinical guidelines with large language models for improved sepsis mortality prediction,True,True,True,True,Accepted
+Thinking Like an Expert: Aligning LLM Thought Processes for Automated Safety Modeling of High-Altitude Solar Drones,True,True,True,True,Accepted
+AgentReport: A Multi-Agent LLM Approach for Automated and Reproducible Bug Report Generation,True,True,True,True,Accepted
+Prompt-Based Learning for Factual Knowledge Infusion in Large Language Models,True,True,True,True,Accepted
+Safe Pruning LoRA: Robust Distance-Guided Pruning for Safety Alignment in Adaptation of LLMs,True,True,True,True,Accepted
+Healthcare-Focused Turkish Medical LLM: Training on Real Patient-Doctor Question-Answer Data for Enhanced Medical Insight,True,True,True,True,Accepted
+A Novel Adversarial Augmentation-based Domain LLM Framework for Perceiving IoT Service States,True,True,True,True,Accepted
+Benchmarking Hook and Bait Urdu news dataset for domain-agnostic and multilingual fake news detection using large language models,True,True,True,True,Accepted
+Ontology-conformal recognition of materials entities using language models,False,False,False,False,Rejected
+LoRA fine-tuning of Llama3 large model for intelligent fishery field,True,True,True,True,Accepted
+eCBT-I dialogue system: a comparative evaluation of large language models and adaptation strategies for insomnia treatment,True,True,True,True,Accepted
+Transfer learning driven fake news detection and classification using large language models,False,False,False,False,Rejected
+GUIDE: A prescriptive hybrid AI framework for energy-efficient appliances usage through behavioral modeling and LLM guidance,True,True,False,True,Accepted
+Estimating urban flooding depth by integrating multimodal image-text data: A segment-level direct preference optimization-based multimodal large language model,False,False,False,False,Rejected
+Visual-language transformer-based tomato leaf disease detection for portable greenhouse monitoring device,False,False,False,False,Rejected
+TCM-DS: a large language model for intelligent traditional Chinese medicine edible herbal formulas recommendations,True,True,True,True,Accepted
+MVLFLM: A parameter-efficient large language model framework for cross-domain multi-voltage load forecasting in smart grids,False,True,False,True,Undecided
+XuanHuGPT: parameter-efficient fine-tuning of large language model in the field of traditional Chinese medicine,True,True,True,True,Accepted
+Hybrid backdoor attacks for deep code models,False,False,False,False,Rejected
+AI-Based Pre-Renewal Design for Historic Building Facades: An AIGC–LoRA Framework with Collaborative Assessment,False,True,False,False,Rejected
+Efficient Network Traffic Analysis Using Large-Parameter LLMs on Consumer-Grade GPUs,True,True,True,True,Accepted
+DAFT: Domain-Augmented Fine-Tuning for Large Language Models in Emotion Recognition of Health Misinformation,True,True,True,True,Accepted
+Fine tuning large language models for hate speech detection in Hinglish and code mixed custom dataset through a socially responsible approach for safer digital platforms,True,True,False,True,Accepted
+Fine-Tuning a Local LLM for Thermoelectric Generators with QLoRA: From Generalist to Specialist,True,True,True,True,Accepted
+"A Multimodal Agent Framework for Construction Scenarios: Accurate Perception, Dynamic Retrieval, and Explainable Hazard Reasoning",True,True,False,False,Undecided
+RAG-TPC: Retrieval Augmented Generation for Teenager Psychological Counseling Using DeepSeek,True,True,True,True,Accepted
+The Retrieval-Augmented Pedagogical Assistant (RAPA): A Methodology for Enhancing Critical Thinking and Equity in AI-Augmented Education,False,False,False,False,Rejected
